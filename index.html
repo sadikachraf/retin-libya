@@ -731,28 +731,11 @@ footer strong{color:var(--lime)}
             <input type="tel" id="f-phone" placeholder="09xxxxxxxx" />
           </div>
           <div class="fgroup">
-            <label>المدينة *</label>
-            <select id="f-city">
-              <option value="">اختاري مدينتك</option>
-              <option>طرابلس</option>
-              <option>بنغازي</option>
-              <option>مصراتة</option>
-              <option>الزاوية</option>
-              <option>البيضاء</option>
-              <option>زليتن</option>
-              <option>الخمس</option>
-              <option>سبها</option>
-              <option>غريان</option>
-              <option>ترهونة</option>
-              <option>درنة</option>
-              <option>سرت</option>
-              <option>أجدابيا</option>
-              <option>أخرى</option>
-            </select>
+            <label>العنوان الكامل *</label>
+            <input type="text" id="f-city" placeholder="مثال: طرابلس، حي الأندلس، شارع..." />
           </div>
-          <div class="fgroup">
-            <label>ملاحظات (اختياري)</label>
-            <input type="text" id="f-notes" placeholder="أي تفاصيل إضافية..." />
+          <div class="fgroup" style="display:none">
+            <input type="text" id="f-notes" value="" />
           </div>
           <button class="submit-btn" id="mainSubmit" onclick="submitOrder()">🛒 اطلبي الآن — الدفع عند الاستلام</button>
           <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-top:14px;flex-wrap:wrap">
@@ -763,14 +746,43 @@ footer strong{color:var(--lime)}
         </div>
 
         <!-- THANK YOU -->
-        <div id="thankyou" style="display:none;text-align:center;padding:32px 16px">
-          <div style="width:70px;height:70px;border-radius:50%;background:#e8f8f0;border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 20px">✓</div>
-          <h2 style="color:var(--black);font-size:24px;font-weight:900;margin-bottom:10px">تم استلام طلبك! 🎉</h2>
-          <p style="color:var(--mid);font-size:14px;line-height:1.8">
-            شكراً لكِ يا حبيبتي!<br>
-            فريقنا سيتصل بكِ خلال 24 ساعة لتأكيد الطلب.<br>
-            <strong style="color:var(--lime-dark)">يرجى إبقاء هاتفك مفعّلاً.</strong>
-          </p>
+        <div id="thankyou" style="display:none;text-align:center;padding:24px 16px 32px">
+
+          <!-- Big check -->
+          <div style="width:90px;height:90px;border-radius:50%;background:#e8f8f0;border:3px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:42px;margin:0 auto 20px;box-shadow:0 8px 32px rgba(39,174,96,.2)">✓</div>
+
+          <!-- Title -->
+          <h2 style="color:var(--black);font-size:26px;font-weight:900;margin-bottom:6px">تم استلام طلبك! 🎉</h2>
+          <p style="color:var(--green);font-size:14px;font-weight:700;margin-bottom:24px">سنتواصل معكِ قريباً</p>
+
+          <!-- Warning box — answer the call -->
+          <div style="background:#FFF3CD;border:2px solid #F5C518;border-radius:16px;padding:20px 18px;margin-bottom:20px;text-align:right">
+            <div style="font-size:22px;margin-bottom:8px">📞</div>
+            <div style="font-size:16px;font-weight:900;color:#7B5800;margin-bottom:8px">مهم جداً — ردّي على المكالمة!</div>
+            <div style="font-size:14px;color:#9A6F00;line-height:1.8">
+              فريقنا سيتصل بكِ على رقمك <strong>خلال 24 ساعة</strong> لتأكيد الطلب وترتيب التوصيل.<br>
+              <strong>إذا ما رديتِ — سيتم إلغاء الطلب تلقائياً.</strong>
+            </div>
+          </div>
+
+          <!-- Order summary -->
+          <div style="background:#f8f8f8;border-radius:14px;padding:16px 18px;text-align:right;margin-bottom:20px">
+            <div style="font-size:13px;color:var(--light);margin-bottom:10px;font-weight:600">ملخص طلبك</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span style="font-size:15px;font-weight:800;color:var(--black)" id="ty-offer">—</span>
+              <span style="font-size:13px;color:var(--mid)">العرض المختار</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:15px;font-weight:800;color:var(--lime-dark)" id="ty-price">—</span>
+              <span style="font-size:13px;color:var(--mid)">المبلغ الإجمالي</span>
+            </div>
+          </div>
+
+          <!-- Trust row -->
+          <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap">
+            <span style="font-size:12px;color:var(--light);display:flex;align-items:center;gap:4px">🚚 الدفع عند الاستلام</span>
+            <span style="font-size:12px;color:var(--light);display:flex;align-items:center;gap:4px">🇱🇾 توصيل لجميع المدن</span>
+          </div>
         </div>
 
       </div><!-- end padding -->
@@ -964,7 +976,7 @@ function submitOrder(){
 
   if(!name)  { alert('الرجاء إدخال الاسم الكامل'); return; }
   if(!phone || phone.length < 9) { alert('الرجاء إدخال رقم هاتف صحيح'); return; }
-  if(!city)  { alert('الرجاء اختيار المدينة'); return; }
+  if(!city)  { alert('الرجاء إدخال العنوان الكامل'); return; }
 
   const now = new Date();
   const y = now.getFullYear();
@@ -985,7 +997,7 @@ function submitOrder(){
     sku:        'AS88101',
     product:    'Celimax Retinal Shot Tightening Booster',
     quantity:   offer.qty === 'قطعة واحدة' ? 1 : offer.qty === 'قطعتان' ? 2 : 3,
-    totalPrice: offer.price,
+    totalPrice: offer.price.replace(/[^0-9]/g, ''),
     currency:   'LYD',
     notes:      document.getElementById('f-notes').value
   };
@@ -1006,9 +1018,15 @@ function submitOrder(){
     content_type: 'product'
   });
 
+  // Populate thank you summary
+  document.getElementById('ty-offer').textContent = offer.qty;
+  document.getElementById('ty-price').textContent = offer.price;
+
   document.getElementById('formBody').style.display = 'none';
   document.getElementById('thankyou').style.display  = 'block';
-  window.scrollTo({top: document.getElementById('order').offsetTop, behavior:'smooth'});
+
+  // Scroll to top of the white order box so thank you is fully visible
+  document.getElementById('order').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 /* ── FAQ TOGGLE ── */
