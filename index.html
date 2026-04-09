@@ -687,36 +687,34 @@ footer strong{color:var(--lime)}
         </div>
 
         <!-- Row 2 POPULAR -->
-        <div class="orow" id="orow2" onclick="pickOffer(2,'قطعتان','299 د.ل')" style="border:2px solid var(--lime);border-radius:14px;padding:14px 16px;margin-bottom:10px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;position:relative;background:var(--lime-pale);transition:border-color .2s,background .2s">
+        <div class="orow" id="orow2" onclick="pickOffer(2,'قطعتان','349 د.ل')" style="border:2px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:10px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;position:relative;background:var(--white);transition:border-color .2s,background .2s">
           <div style="position:absolute;top:-12px;right:16px;background:var(--black);color:var(--lime);font-size:11px;font-weight:800;padding:3px 14px;border-radius:50px">⭐ الأكثر مبيعاً</div>
           <div style="display:flex;align-items:center;gap:12px">
-            <div class="radio-dot" style="width:22px;height:22px;border-radius:50%;border:2px solid var(--lime);flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--lime);transition:all .2s">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--black)"></div>
-            </div>
+            <div class="radio-dot" style="width:22px;height:22px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:transparent;transition:all .2s"></div>
             <div>
               <div style="font-size:15px;font-weight:800;color:var(--black)">🥈 قطعتان</div>
-              <div style="font-size:12px;color:var(--lime-dark);font-weight:600">+50 د.ل فقط للقطعة الثانية! 🔥</div>
+              <div style="font-size:12px;color:var(--lime-dark);font-weight:600">+100 د.ل فقط للقطعة الثانية! 🔥</div>
             </div>
           </div>
           <div style="text-align:left">
-            <div style="font-size:20px;font-weight:900;color:var(--black)">299 <span style="font-size:13px;font-weight:600;color:var(--light)">د.ل</span></div>
-            <div style="font-size:11px;color:var(--danger);font-weight:700">وفّري 199 د.ل</div>
+            <div style="font-size:20px;font-weight:900;color:var(--black)">429 <span style="font-size:13px;font-weight:600;color:var(--light)">د.ل</span></div>
+            <div style="font-size:11px;color:var(--danger);font-weight:700">وفّري 149 د.ل</div>
           </div>
         </div>
 
         <!-- Row 3 BEST VALUE -->
-        <div class="orow" id="orow3" onclick="pickOffer(3,'ثلاث قطع','349 د.ل')" style="border:2px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;position:relative;transition:border-color .2s,background .2s">
+        <div class="orow" id="orow3" onclick="pickOffer(3,'ثلاث قطع','429 د.ل')" style="border:2px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;position:relative;transition:border-color .2s,background .2s">
           <div style="position:absolute;top:-12px;right:16px;background:var(--danger);color:var(--white);font-size:11px;font-weight:800;padding:3px 14px;border-radius:50px">🔥 أفضل قيمة</div>
           <div style="display:flex;align-items:center;gap:12px">
             <div class="radio-dot" style="width:22px;height:22px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s"></div>
             <div>
               <div style="font-size:15px;font-weight:800;color:var(--black)">🥇 ثلاث قطع</div>
-              <div style="font-size:12px;color:var(--light)">+100 د.ل فقط للثلاث قطع! 🎁</div>
+              <div style="font-size:12px;color:var(--light)">+180 د.ل فقط للثلاث قطع! 🎁</div>
             </div>
           </div>
           <div style="text-align:left">
-            <div style="font-size:20px;font-weight:900;color:var(--black)">349 <span style="font-size:13px;font-weight:600;color:var(--light)">د.ل</span></div>
-            <div style="font-size:11px;color:var(--danger);font-weight:700">وفّري 398 د.ل</div>
+            <div style="font-size:20px;font-weight:900;color:var(--black)">429 <span style="font-size:13px;font-weight:600;color:var(--light)">د.ل</span></div>
+            <div style="font-size:11px;color:var(--danger);font-weight:700">وفّري 318 د.ل</div>
           </div>
         </div>
 
@@ -885,7 +883,7 @@ footer strong{color:var(--lime)}
 
 <script>
 /* ── STATE ── */
-let offer = {qty:'قطعتان', price:'299 د.ل'};
+let offer = {qty:'قطعتان', price:'349 د.ل'};
 let checkoutFired = false;
 
 /* ── FB PIXEL EVENTS ── */
@@ -901,12 +899,12 @@ function fireInitiateCheckout(){
 
 /* ── DEFAULT SELECT offer 2 ── */
 window.addEventListener('DOMContentLoaded', () => {
-  pickOffer(2,'قطعتان','299 د.ل');
+  pickOffer(2,'قطعتان','349 د.ل');
   // FB Pixel — ViewContent
   if(typeof fbq !== 'undefined') fbq('track','ViewContent',{
     content_name: 'Celimax Retinal Shot',
     currency: 'LYD',
-    value: 299
+    value: 349
   });
   startCountdown();
   animateViewers();
@@ -928,28 +926,24 @@ function goOrder(){
 function pickOffer(n, qty, price){
   offer = {qty, price};
 
-  const rows = [
-    {id:'orow1', lime:false},
-    {id:'orow2', lime:true},
-    {id:'orow3', lime:false}
-  ];
+  const rows = ['orow1','orow2','orow3'];
 
-  rows.forEach(({id, lime}, i) => {
-    const el = document.getElementById(id);
+  rows.forEach((id, i) => {
+    const el  = document.getElementById(id);
     const dot = el.querySelector('.radio-dot');
     const selected = (i === n - 1);
 
     if(selected){
       el.style.borderColor = 'var(--lime)';
       el.style.background  = 'var(--lime-pale)';
-      dot.style.background   = 'var(--lime)';
-      dot.style.borderColor  = 'var(--lime)';
+      dot.style.background  = 'var(--lime)';
+      dot.style.borderColor = 'var(--lime)';
       dot.innerHTML = '<div style="width:10px;height:10px;border-radius:50%;background:var(--black)"></div>';
     } else {
       el.style.borderColor = 'var(--border)';
-      el.style.background  = (id==='orow2') ? 'var(--lime-pale)' : 'var(--white)';
-      dot.style.background   = 'transparent';
-      dot.style.borderColor  = '#ccc';
+      el.style.background  = 'var(--white)';
+      dot.style.background  = 'transparent';
+      dot.style.borderColor = '#ccc';
       dot.innerHTML = '';
     }
   });
