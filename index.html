@@ -973,7 +973,10 @@ function submitOrder(){
   if(!city)  { alert('الرجاء اختيار المدينة'); return; }
 
   const now = new Date();
-  const orderDate = now.toLocaleString('ar-LY');
+  const y = now.getFullYear();
+  const m = String(now.getMonth()+1).padStart(2,'0');
+  const d = String(now.getDate()).padStart(2,'0');
+  const orderDate = y+'-'+m+'-'+d;
   const orderId = 'ORD-' + Date.now();
   const pageUrl = window.location.href;
 
